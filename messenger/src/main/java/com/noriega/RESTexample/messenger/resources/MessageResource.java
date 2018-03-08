@@ -35,7 +35,6 @@ public class MessageResource {
 			return messageService.getAllMessagePaginated(filterBean.getStart(), filterBean.getSize());
 		}
 		return messageService.getAllMessages();
-		
 	}
 	
 	@POST
@@ -62,6 +61,11 @@ public class MessageResource {
 	@Path("/{messageId}")
 	public void deleteMessage(@PathParam("messageId") long id) {
 		messageService.removeMessage(id);
+	}
+	
+	@Path("/{messageId}/comments")
+	public CommentResource getComments() {
+		return new CommentResource();
 	}
 	
 	
